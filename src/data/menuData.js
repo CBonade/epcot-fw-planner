@@ -30,6 +30,7 @@ const rawMarketplaces = [
     name: 'Gyozas of the Galaxy',
     type: 'kiosk',
     area: 'World Discovery, near Guardians of the Galaxy: Cosmic Rewind (Marketplace #1)',
+    mapPos: { x: 296, y: 840 },
     items: [
       { name: 'Basil Pesto Chicken Dumplings', price: '$5.99', description: 'Chicken dumplings, basil pesto, fonduta, tomato confit, balsamic', tags: ['new for 2026'] },
       { name: 'Edamame Dumplings', price: '$5.29', description: 'Butternut squash purée, caramelized onions, sage, walnut-toasted garlic aillade', tags: ['plant-based', 'new for 2026'] },
@@ -41,18 +42,21 @@ const rawMarketplaces = [
     name: 'Coastal Eats',
     type: 'kiosk',
     area: 'World Discovery (Marketplace #2, opens October 2, 2026)',
+    mapPos: { x: 318, y: 840 },
     items: [],
   },
   {
     name: 'The Fry Basket',
     type: 'kiosk',
     area: 'World Discovery (Marketplace #3)',
+    mapPos: { x: 270, y: 815 },
     items: [],
   },
   {
     name: 'Flavors from Fire',
     type: 'kiosk',
     area: 'World Nature, campfire-themed booth (Marketplace #4)',
+    mapPos: { x: 313, y: 803 },
     items: [
       { name: 'Swine Brine', price: null, description: 'Mustard-and-bourbon novelty cocktail; signature drink since 2017', tags: [] },
       { name: 'Smoked Chocolate Bread Pudding', price: null, description: null, tags: ['new for 2026', 'vegetarian'] },
@@ -63,18 +67,21 @@ const rawMarketplaces = [
     name: 'Refreshment Station',
     type: 'kiosk',
     area: 'World Discovery, hosted by Coca-Cola (Marketplace #5)',
+    mapPos: { x: 296, y: 803 },
     items: [],
   },
   {
     name: 'Brew-Wing Lab',
     type: 'kiosk',
     area: 'Near the Odyssey building (Marketplace #6)',
+    mapPos: { x: 95, y: 400 },
     items: [],
   },
   {
     name: 'Australia',
     type: 'kiosk',
     area: 'Near Disney Traders, World Discovery side of the promenade (Marketplace #7)',
+    mapPos: { x: 322, y: 650 },
     items: [
       { name: 'Grilled Bushberry-spiced Shrimp Skewer', price: '$6.99', description: 'Sweet-and-sour vegetables and coconut-chili sauce', tags: ['30th Anniversary Legacy Item'] },
       { name: 'Mixed Berry Pavlova', price: '$4.79', description: 'Crunchy meringue shell with macerated berries and whipped cream', tags: ['vegetarian'] },
@@ -85,6 +92,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇲🇽',
     area: 'World Showcase, Mexico pavilion (Marketplace #8)',
+    mapPos: { x: 190, y: 700 },
     items: [
       { name: 'Taco de Camarón', price: '$8.50', description: 'Flour tortilla with crispy tempura shrimp, shredded cabbage, and chipotle aïoli', tags: ['30th Anniversary Legacy Item'] },
       { name: 'Paleta de Moras (Berry Popsicle)', price: null, description: 'Mixed berry popsicle', tags: [] },
@@ -95,6 +103,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇳🇴',
     area: 'Norway pavilion, World Showcase (snack cart — not a numbered Global Marketplace)',
+    mapPos: { x: 110, y: 560 },
     items: [
       { name: 'School Bread', price: '$5.49', description: 'Sweet roll filled with custard and dipped in coconut', tags: [] },
       { name: 'Caramel Cream & Gjetost Bolle', price: null, description: 'Sweet bread roll filled with caramel cream and Gjetost (Norwegian brown) cheese', tags: ['new for 2026'] },
@@ -105,6 +114,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇨🇳',
     area: 'China pavilion, World Showcase (Marketplace #9)',
+    mapPos: { x: 152, y: 483 },
     items: [
       { name: 'Beijing Zhajiang Noodles', price: '$8.50', description: null, tags: ['new for 2026'] },
       { name: 'Chicken Dumplings', price: '$5.75', description: 'House-made sweet-and-spicy sauce', tags: [] },
@@ -120,18 +130,21 @@ const rawMarketplaces = [
     name: 'India',
     type: 'kiosk',
     area: 'Near China, World Showcase (Marketplace #10, opens October 2, 2026)',
+    mapPos: { x: 140, y: 408 },
     items: [],
   },
   {
     name: 'Refreshment Outpost',
     type: 'kiosk',
     area: 'World Showcase, hosted by Coca-Cola (Marketplace #11)',
+    mapPos: { x: 60, y: 380 },
     items: [],
   },
   {
     name: 'The Alps',
     type: 'kiosk',
     area: 'Near Germany, World Showcase (Marketplace #12, opens October 2, 2026)',
+    mapPos: { x: 48, y: 350 },
     items: [],
   },
   {
@@ -139,6 +152,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇩🇪',
     area: 'Germany pavilion, World Showcase (Marketplace #13, opens Oct 2, 2026)',
+    mapPos: { x: 60, y: 328 },
     items: [
       { name: 'Zwiebelkuchen (German Onion Cake)', price: '$9.79', description: 'Caramelized onions, bacon, herbs, savory custard', tags: [] },
       { name: 'Caramel-Apple Cheesecake Baumkuchen', price: null, description: null, tags: [] },
@@ -148,6 +162,7 @@ const rawMarketplaces = [
     name: 'Spain',
     type: 'kiosk',
     area: 'Near Germany and Italy, World Showcase (Marketplace #14)',
+    mapPos: { x: 150, y: 290 },
     items: [
       { name: 'Trio de Pintxos', price: '$7.25', description: 'Jamón croqueta, pan con tomate, tortilla Española', tags: ['new for 2026'] },
       { name: 'Paella Caldoso', price: '$8.00', description: 'Rock shrimp, bay scallops, smoked mussels', tags: ['gluten/wheat-friendly'] },
@@ -160,6 +175,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇮🇹',
     area: 'Italy pavilion, World Showcase — walk-up window, no reservation (Marketplace #15)',
+    mapPos: { x: 238, y: 300 },
     items: [
       { name: 'Stromboli', price: '$8.00', description: 'Baked ham and provolone roll with Parmesan and tomato sauce', tags: [] },
       { name: 'Pollo al Marsala', price: '$9.00', description: 'Roasted chicken drumstick, creamy potato gnocchi, mushrooms, Marsala sauce', tags: ['30th Anniversary Legacy Item'] },
@@ -171,6 +187,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇺🇸',
     area: 'The American Adventure pavilion, World Showcase (Marketplace #16)',
+    mapPos: { x: 400, y: 235 },
     items: [
       { name: 'Gulf Coast-style Seafood Roll', price: '$8.99', description: 'Warm-water lobster, rock shrimp, lobster bisque, sherry-crème fraîche on toasted brioche', tags: ['DDP snack eligible', '30th Anniversary Legacy Item'] },
       { name: 'Smoked Brisket and Cheddar Melt', price: '$6.49', description: 'Chopped smoked brisket, caramelized onions, tangy barbecue, cheddar sauce on potato roll', tags: ['DDP snack eligible', 'new for 2026'] },
@@ -181,6 +198,7 @@ const rawMarketplaces = [
     name: 'Funnel Cake',
     type: 'kiosk',
     area: 'Near American Adventure, World Showcase (Marketplace #17)',
+    mapPos: { x: 452, y: 213 },
     items: [],
   },
   {
@@ -188,6 +206,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇯🇵',
     area: 'Japan pavilion, World Showcase (Marketplace #18)',
+    mapPos: { x: 543, y: 263 },
     items: [
       { name: 'Spicy Temaki Hand Roll', price: null, description: null, tags: ['new for 2026', 'spicy'] },
       { name: 'Beef Wagyu Temaki Hand Roll', price: null, description: null, tags: ['new for 2026'] },
@@ -200,6 +219,7 @@ const rawMarketplaces = [
     name: 'Greece',
     type: 'kiosk',
     area: 'Near Japan and Morocco, World Showcase (Marketplace #19, open Sept 18 – Nov 8)',
+    mapPos: { x: 573, y: 250 },
     items: [
       { name: 'Griddled Cheese with Pistachios and Honey', price: '$5.25', description: "Emile's Fromage Montage cheese-stroll item", tags: ['vegetarian'] },
       { name: 'Lamb Gyro', price: '$7.00', description: 'Shaved lettuce, tomato-cucumber relish, tzatziki on warm flatbread', tags: [] },
@@ -213,6 +233,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇲🇦',
     area: 'Morocco pavilion, World Showcase — "Tangierine Café: Flavors of the Medina" (Marketplace #20)',
+    mapPos: { x: 637, y: 258 },
     items: [
       { name: 'Ras el Hanout Cauliflower Bowl', price: '$6.49', description: 'Chickpea salad, golden raisin relish, parsley, served with pita', tags: ['plant-based'] },
       { name: 'Moroccan Wrap with Plant-based Falafel', price: '$6.29', description: 'Tomato-cucumber relish and garlic sauce on warm Moroccan flatbread', tags: ['plant-based', 'vegan'] },
@@ -223,6 +244,7 @@ const rawMarketplaces = [
     name: 'Belgium',
     type: 'kiosk',
     area: 'Between Morocco and France, World Showcase (Marketplace #21)',
+    mapPos: { x: 693, y: 293 },
     items: [
       { name: 'Belgian Beer Flight', price: '$12.75', description: 'Van Steenberge Piraat 7 Strong Ale, St. Bernardus Watou Blond Ale, Verhaeghe Duchesse Red Sweet & Tart Cherry Ale', tags: [] },
       { name: 'Individual Belgian Beer Pour', price: '$6.00 / $9.75', description: null, tags: [] },
@@ -233,6 +255,7 @@ const rawMarketplaces = [
     name: 'Brazil',
     type: 'kiosk',
     area: 'Between Morocco and France, World Showcase (Marketplace #22)',
+    mapPos: { x: 700, y: 322 },
     items: [
       { name: 'Feijoada', price: '$6.50', description: 'Black beans with pork belly and Brazil nut pesto', tags: [] },
       { name: 'Pão de Queijo', price: '$5.00', description: 'Brazilian cheese bread', tags: ['vegetarian'] },
@@ -244,6 +267,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇫🇷',
     area: 'France pavilion, World Showcase (Marketplace #23)',
+    mapPos: { x: 740, y: 360 },
     items: [
       { name: 'Boeuf Braisé au Vin Rouge et Échalotes', price: '$9.50', description: 'Red wine-braised short ribs with shallot confit and potato gâteau', tags: [] },
       { name: 'Brioche aux Épices avec Garniture Mornay de Trois Fromages', price: '$8.95', description: 'Spiced brioche with three-cheese mornay filling', tags: ['vegetarian'] },
@@ -257,6 +281,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇬🇧',
     area: 'United Kingdom pavilion, World Showcase (snack cart — not a numbered Global Marketplace)',
+    mapPos: { x: 700, y: 560 },
     items: [
       { name: 'Scotch Egg', price: '$15.00', description: 'Golden-fried hard-boiled cage-free egg wrapped in sausage with mustard sauce', tags: [] },
       { name: 'Fish and Chips', price: null, description: 'Served at Yorkshire County Fish Shop in the UK pavilion', tags: [] },
@@ -267,6 +292,7 @@ const rawMarketplaces = [
     type: 'pavilion',
     flag: '🇨🇦',
     area: 'Canada pavilion, World Showcase (Marketplace #24)',
+    mapPos: { x: 594, y: 648 },
     items: [
       { name: 'Cheddar and Bacon Soup with Pretzel Roll', price: '$6.29', description: null, tags: ['DDP snack eligible', '30th Anniversary Legacy Item'] },
       { name: 'Filet Mignon with Mushrooms and Mashed Potatoes', price: '$10.49', description: null, tags: ['DDP snack eligible'] },
@@ -278,18 +304,21 @@ const rawMarketplaces = [
     name: 'Swirled Showcase',
     type: 'kiosk',
     area: 'Near the walkway to World Celebration (Marketplace #25)',
+    mapPos: { x: 497, y: 693 },
     items: [],
   },
   {
     name: 'Shimmering Sips',
     type: 'kiosk',
     area: 'Near the walkway to World Celebration (Marketplace #26)',
+    mapPos: { x: 555, y: 658 },
     items: [],
   },
   {
     name: "Hawai'i",
     type: 'kiosk',
     area: 'Near the front of World Showcase, near the walkway to World Celebration (Marketplace #27)',
+    mapPos: { x: 413, y: 680 },
     items: [
       { name: 'Slow-roasted Pork Slider', price: '$5.99', description: 'Sweet-and-sour chutney with DOLE pineapple, spicy mayonnaise', tags: ['30th Anniversary Legacy Item'] },
       { name: 'Hawaiian Rice Bowl', price: '$6.29', description: 'Spam, eggs, eel sauce, spicy mayonnaise, furikake', tags: [] },
@@ -303,6 +332,7 @@ const rawMarketplaces = [
     name: 'Forest & Field',
     type: 'kiosk',
     area: 'Near the walkway to World Celebration, World Showcase (Marketplace #28)',
+    mapPos: { x: 475, y: 695 },
     items: [
       { name: 'Pumpkin-Mascarpone Ravioli', price: null, description: 'Returning favorite', tags: ['vegetarian', '30th Anniversary Legacy Item'] },
     ],
@@ -311,18 +341,21 @@ const rawMarketplaces = [
     name: 'Milled & Mulled',
     type: 'kiosk',
     area: 'Near Forest & Field, World Showcase (Marketplace #29)',
+    mapPos: { x: 485, y: 720 },
     items: [],
   },
   {
     name: 'Bramblewood Bites',
     type: 'kiosk',
     area: 'Near Forest & Field, World Showcase (Marketplace #30)',
+    mapPos: { x: 497, y: 747 },
     items: [],
   },
   {
     name: 'Earth Eats',
     type: 'kiosk',
     area: 'World Nature (Marketplace #31, opens October 2, 2026)',
+    mapPos: { x: 588, y: 858 },
     items: [
       { name: 'Lemon-Almond-Olive Oil Cake', price: null, description: 'New for 2026', tags: ['new for 2026', 'vegetarian'] },
     ],
@@ -331,12 +364,14 @@ const rawMarketplaces = [
     name: 'Festival Favorites',
     type: 'kiosk',
     area: 'World Celebration (Marketplace #32, opens September 9, 2026)',
+    mapPos: { x: 472, y: 862 },
     items: [],
   },
   {
     name: 'The Wedge (Dairy Does More)',
     type: 'kiosk',
     area: 'Inside CommuniCore Hall, World Celebration (Marketplace #33, open Sept 18 – Nov 8)',
+    mapPos: { x: 487, y: 890 },
     items: [
       { name: 'Selection of Cheeses with accompaniments', price: null, description: null, tags: ['vegetarian'] },
       { name: 'Cannoli Milkshake', price: null, description: null, tags: ['vegetarian'] },

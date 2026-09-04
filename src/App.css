@@ -309,49 +309,50 @@ html, body {
 .map-promenade {
   fill: none;
   stroke: #c7b8a8;
-  stroke-width: 0.9;
-  stroke-dasharray: 1.6 1.4;
+  stroke-width: 6;
+  stroke-dasharray: 12 10;
+  stroke-linejoin: round;
 }
 .map-lagoon {
   fill: #a9d6e8;
   stroke: #8fc3da;
-  stroke-width: 0.4;
+  stroke-width: 2;
 }
 .map-lagoon-label {
-  font-size: 2px;
+  font-size: 15px;
   fill: #3d6f82;
   font-weight: 600;
 }
 .map-entrance-label {
-  font-size: 2.6px;
+  font-size: 20px;
   fill: var(--purple-dark);
   font-weight: 700;
 }
 .map-pavilion-dot circle {
   fill: #ffffff;
   stroke: var(--purple);
-  stroke-width: 0.6;
+  stroke-width: 3;
 }
 .map-flag {
-  font-size: 3.6px;
+  font-size: 20px;
 }
 .map-dot {
   fill: #f2994a;
   stroke: #fff;
-  stroke-width: 0.3;
+  stroke-width: 1.5;
 }
 .map-pin-count {
-  font-size: 3.2px;
+  font-size: 18px;
   fill: #fff;
   font-weight: 700;
 }
 .map-pin-label {
-  font-size: 2.8px;
+  font-size: 16px;
   fill: var(--text);
   font-weight: 700;
   paint-order: stroke;
   stroke: #fff;
-  stroke-width: 0.7px;
+  stroke-width: 4px;
 }
 .map-detail {
   margin-top: 12px;

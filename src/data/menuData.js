@@ -1,21 +1,21 @@
 // 2026 Epcot International Food & Wine Festival — marketplace + menu data.
 //
-// Marketplace list, official numbering, and walking order below are taken directly
-// from Disney's own 2026 festival map/legend (33 numbered "Global Marketplaces"),
-// with Norway and United Kingdom inserted in their real physical position even
-// though they aren't numbered marketplaces this year (their festival items are
-// served from the permanent pavilion instead of a dedicated marketplace booth).
+// Marketplace list and official numbering are taken directly from Disney's own
+// 2026 festival map/legend (33 numbered "Global Marketplaces"), with Norway and
+// United Kingdom inserted even though they aren't numbered marketplaces this
+// year (their festival items are served from the permanent pavilion instead of
+// a dedicated marketplace booth). Each entry's `mapPos` is a pixel coordinate
+// hand-read off that same festival map photo — MapView draws its own original
+// lagoon/park artwork (not a copy of that photo) but positions every marker at
+// these real coordinates, so array order no longer drives the map layout.
 //
-// IMPORTANT: this array's order IS the real walking order around the World
-// Showcase promenade loop (matching the festival map's numbering), starting and
-// ending at the World Celebration/entrance side. MapView relies on this order —
-// don't reorder this list without updating the map's layout accordingly.
-//
-// Dish-level menu data (items, prices, descriptions, tags) was compiled from public
-// festival-menu roundups (Disney Food Blog, BlogMickey, AllEars, WDW Prep School,
-// DVC Shop, WDWNT, Resortsgal) published Aug 2026. Several newer booths hadn't
-// published itemized menus at compile time — included with an empty `items` array
-// so they still show up for reference and can be filled in once known.
+// Dish-level menu data (items, prices, descriptions, tags) was compiled from
+// public festival-menu roundups (Disney Parks Blog, Disney Food Blog, BlogMickey,
+// AllEars, WDW Prep School, DVC Shop, WDWNT, Resortsgal) published Aug 2026.
+// Coverage is thorough but not guaranteed complete/current — a handful of prices
+// and a couple of newer booths' full offerings were still unconfirmed as of
+// compile time; double-check against Disney's official festival page before your
+// trip, as menus and prices can change.
 
 function slug(s) {
   return s
@@ -43,14 +43,24 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'World Discovery (Marketplace #2, opens October 2, 2026)',
     mapPos: { x: 318, y: 840 },
-    items: [],
+    items: [
+      { name: 'Crab Cake', price: '$7.49', description: 'With tropical fruit chutney, mustard sauce, and micro celery', tags: [] },
+      { name: 'Seafood Pot Pie', price: '$7.49', description: 'Shrimp, scallops, and lobster bisque topped with puff pastry', tags: [] },
+      { name: "Riley's Lookout Sauvignon Blanc", price: '$6.50', description: 'Marlborough, New Zealand', tags: [] },
+      { name: 'Boyd & Blair Pomegranate Codder', price: '$12.50', description: 'Cocktail, Glenshaw, PA', tags: [] },
+    ],
   },
   {
     name: 'The Fry Basket',
     type: 'kiosk',
     area: 'World Discovery (Marketplace #3)',
     mapPos: { x: 270, y: 815 },
-    items: [],
+    items: [
+      { name: 'Adobo Yuca Fries', price: '$5.75', description: 'With plant-based garlic-cilantro aïoli', tags: ['plant-based', 'DDP snack eligible'] },
+      { name: 'Fry Flight', price: '$8.00', description: 'Sea Salt-Malt Vinegar Fries (plant-based); Truffle-Parmesan Fries with black garlic-truffle aïoli; Sweet Potato Casserole Fries with cinnamon-sugar, candied pecans, and marshmallow cream', tags: ['DDP snack eligible'] },
+      { name: '3 Daughters Brewing Mojito Blonde Ale', price: '$5.75 / $9.75', description: null, tags: ['new for 2026'] },
+      { name: 'Boyd & Blair Grapefruit Mule', price: '$12.50', description: null, tags: [] },
+    ],
   },
   {
     name: 'Flavors from Fire',
@@ -58,9 +68,12 @@ const rawMarketplaces = [
     area: 'World Nature, campfire-themed booth (Marketplace #4)',
     mapPos: { x: 313, y: 803 },
     items: [
-      { name: 'Swine Brine', price: null, description: 'Mustard-and-bourbon novelty cocktail; signature drink since 2017', tags: [] },
-      { name: 'Smoked Chocolate Bread Pudding', price: null, description: null, tags: ['new for 2026', 'vegetarian'] },
-      { name: '1000 Stories Bourbon Barrel-Aged Zinfandel', price: null, description: null, tags: ['new for 2026'] },
+      { name: 'Rodizio-style Grilled Beef Skewer', price: '$6.99', description: 'With marble potatoes, charred shallots, roasted baby peppers, and chimichurri', tags: [] },
+      { name: 'Smoked Corned Beef', price: '$6.49', description: 'With house-made potato chips, cheese curds, pickled onions, and beer cheese fondue', tags: [] },
+      { name: 'Smoked Chocolate Bread Pudding', price: '$4.49', description: 'Chocolate ganache, vanilla bean-bourbon sauce, smoked sea salt', tags: ['new for 2026', 'vegetarian'] },
+      { name: 'Left Hand Brewing Co. Sawtooth Amber Ale', price: '$6.00 / $9.75', description: null, tags: [] },
+      { name: '1000 Stories Bourbon Barrel-Aged Zinfandel', price: '$6.50', description: null, tags: ['new for 2026'] },
+      { name: 'Swine Brine', price: '$13.00', description: 'Jim Beam Kentucky Straight Bourbon Whiskey, apple-cinnamon cider, lemon juice, and Dijon mustard', tags: ['signature returning cocktail'] },
     ],
   },
   {
@@ -68,14 +81,29 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'World Discovery, hosted by Coca-Cola (Marketplace #5)',
     mapPos: { x: 296, y: 803 },
-    items: [],
+    items: [
+      { name: 'Frozen Coca-Cola Slushy', price: '$6.25', description: 'Assorted flavors rotate seasonally (frozen Coke, frozen Fanta, etc.)', tags: [] },
+      { name: 'Slushy Toppings', price: null, description: 'Pop Rocks, rock candy, gummy worms, and other add-ons for any slushy', tags: [] },
+    ],
   },
   {
     name: 'Brew-Wing Lab',
     type: 'kiosk',
     area: 'Near the Odyssey building (Marketplace #6)',
     mapPos: { x: 95, y: 400 },
-    items: [],
+    items: [
+      { name: 'Garlic-Parmesan Wings', price: '$7.79', description: null, tags: [] },
+      { name: 'Buffalo-Dill Pickle Wings', price: '$7.79', description: null, tags: [] },
+      { name: 'Korean Barbecue Wings', price: '$7.79', description: null, tags: [] },
+      { name: 'Carolina Reaper Wings', price: '$7.79', description: 'Carolina Reaper pepper-curry wings with creamy cucumber raita', tags: ['spicy'] },
+      { name: 'Sweet Chile-Lime Plant-based Chicken Strips', price: '$7.79', description: null, tags: ['plant-based'] },
+      { name: 'Fried Pickle Spears', price: '$5.79', description: null, tags: [] },
+      { name: 'Frozen Pomegranate & Raspberry Tea', price: '$5.19', description: 'Twinings Pomegranate & Raspberry Herbal Tea with orange ice cream molecules', tags: ['non-alcoholic', 'DDP snack eligible'] },
+      { name: 'Pickle Milk Shake', price: '$6.49', description: null, tags: ['30th Anniversary Legacy Item'] },
+      { name: "Civil Society Brewing Everyday I'm Waffle'n IPA", price: '$6.00 / $9.75', description: null, tags: [] },
+      { name: '3 Daughters Brewing Peanut Butter Blondie Blonde Ale', price: '$6.00 / $9.75', description: null, tags: [] },
+      { name: 'Playalinda Brewing Co. Pumpkin Cheesecake Blonde Stout', price: '$6.00 / $9.75', description: null, tags: [] },
+    ],
   },
   {
     name: 'Australia',
@@ -84,7 +112,12 @@ const rawMarketplaces = [
     mapPos: { x: 322, y: 650 },
     items: [
       { name: 'Grilled Bushberry-spiced Shrimp Skewer', price: '$6.99', description: 'Sweet-and-sour vegetables and coconut-chili sauce', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Roasted Lamb Chop', price: '$8.79', description: 'With mint pesto and crushed salt and vinegar potato chips', tags: ['30th Anniversary Legacy Item', 'DDP snack eligible'] },
       { name: 'Mixed Berry Pavlova', price: '$4.79', description: 'Crunchy meringue shell with macerated berries and whipped cream', tags: ['vegetarian'] },
+      { name: 'Bulletin Place Sauvignon Blanc', price: '$6.50', description: null, tags: [] },
+      { name: 'Fowles Farm to Table Shiraz', price: '$6.50', description: null, tags: [] },
+      { name: "Yalumba 'The Y Series' Viognier", price: '$6.50', description: null, tags: [] },
+      { name: 'Wine Flight', price: '$7.50', description: null, tags: [] },
     ],
   },
   {
@@ -95,7 +128,11 @@ const rawMarketplaces = [
     mapPos: { x: 190, y: 700 },
     items: [
       { name: 'Taco de Camarón', price: '$8.50', description: 'Flour tortilla with crispy tempura shrimp, shredded cabbage, and chipotle aïoli', tags: ['30th Anniversary Legacy Item'] },
-      { name: 'Paleta de Moras (Berry Popsicle)', price: null, description: 'Mixed berry popsicle', tags: [] },
+      { name: 'Tostada de Osso Buco', price: '$8.25', description: 'Pork osso buco atop a fried corn tortilla with chipotle black beans, salsa verde, queso fresco, and chives', tags: [] },
+      { name: 'Paleta de Moras (Berry Popsicle)', price: '$7.00', description: 'Berry ice pop filled with sweetened condensed milk, topped with chili-lime seasoning', tags: [] },
+      { name: 'Cherry Nostalgia', price: '$13.50', description: 'Blanco tequila, botanical liqueur, cherry, and lime with a hibiscus salt rim', tags: [] },
+      { name: 'Fruta de la Pasión', price: '$13.75', description: 'Blanco tequila, mezcal, tangy passion fruit purée, and citrus juice with a salty chili rim', tags: [] },
+      { name: 'Mexican Craft Beer', price: '$8.50 / $11.00', description: null, tags: [] },
     ],
   },
   {
@@ -131,21 +168,38 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'Near China, World Showcase (Marketplace #10, opens October 2, 2026)',
     mapPos: { x: 140, y: 408 },
-    items: [],
+    items: [
+      { name: 'Potato and Pea Samosas', price: '$5.49', description: 'With plant-based coriander-lime cream', tags: ['plant-based', '30th Anniversary Legacy Item'] },
+      { name: 'Chicken Tikka Masala', price: '$6.49', description: 'With fennel-spiced yogurt and naan bread', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Curry-Spiced Crispy Cheese (Paneer)', price: '$5.25', description: 'With mango-curry ketchup', tags: ['vegetarian'] },
+      { name: 'Mango Lassi', price: '$5.29', description: null, tags: ['non-alcoholic'] },
+      { name: 'United Breweries Taj Mahal Premium Lager', price: '$6.00 / $9.75', description: null, tags: [] },
+      { name: 'Sula Tropicale Brut Sparkling Wine', price: '$7.75', description: null, tags: [] },
+      { name: 'Mango Lassi with Camikara 8-Year-Old Cask Aged Rum', price: '$12.50', description: null, tags: [] },
+    ],
   },
   {
     name: 'Refreshment Outpost',
     type: 'kiosk',
     area: 'World Showcase, hosted by Coca-Cola (Marketplace #11)',
     mapPos: { x: 60, y: 380 },
-    items: [],
+    items: [
+      { name: 'African Rum Purée Slush', price: '$16.50', description: 'Mango purée and STARR African Rum', tags: [] },
+      { name: 'Frozen Coca-Cola with Amarula Cream Liqueur', price: '$16.50', description: null, tags: [] },
+      { name: 'Outpost Lemonade', price: '$16.50', description: 'Frozen Minute Maid Lemonade and Absolut Vodka', tags: [] },
+      { name: 'Pineapple and Cherry Slush', price: '$6.29', description: null, tags: ['non-alcoholic'] },
+    ],
   },
   {
     name: 'The Alps',
     type: 'kiosk',
     area: 'Near Germany, World Showcase (Marketplace #12, opens October 2, 2026)',
     mapPos: { x: 48, y: 350 },
-    items: [],
+    items: [
+      { name: 'Warm Raclette Swiss Cheese on a Baguette', price: '$6.79', description: 'With jambon and apple-mustard relish', tags: ['30th Anniversary Legacy Item — reimagined for 2026'] },
+      { name: 'Tartiflette', price: '$5.49', description: 'Potatoes gratin, caramelized onions, bacon, thyme, crème fraîche, and brie', tags: [] },
+      { name: 'Kirschwasser Torte', price: '$5.49', description: 'Cherry-brandy buttercream, fondant, sugared almonds, and cherry compote', tags: [] },
+    ],
   },
   {
     name: 'Germany',
@@ -154,8 +208,12 @@ const rawMarketplaces = [
     area: 'Germany pavilion, World Showcase (Marketplace #13, opens Oct 2, 2026)',
     mapPos: { x: 60, y: 328 },
     items: [
-      { name: 'Zwiebelkuchen (German Onion Cake)', price: '$9.79', description: 'Caramelized onions, bacon, herbs, savory custard', tags: [] },
-      { name: 'Caramel-Apple Cheesecake Baumkuchen', price: null, description: null, tags: [] },
+      { name: 'Zwiebelkuchen (German Onion Cake)', price: '$9.79', description: 'Caramelized onions, bacon, herbs, savory custard', tags: ['DDP snack eligible'] },
+      { name: 'Apple Strudel', price: '$5.00', description: 'With vanilla sauce', tags: ['DDP snack eligible'] },
+      { name: 'Schinkennudeln', price: '$5.25', description: 'Pasta gratin with ham, onions, and cheese', tags: ['DDP snack eligible'] },
+      { name: 'Caramel-Apple Cheesecake Baumkuchen', price: '$6.49', description: null, tags: [] },
+      { name: 'Frozen Waffle Old Fashioned', price: '$17.50', description: "Maker's Mark Kentucky Straight Bourbon Whisky, maple syrup, butterscotch syrup, and angostura bitters, topped with a liege waffle and cherry", tags: [] },
+      { name: 'Schöfferhofer Grapefruit Hefeweizen', price: '$6.00 / $9.75', description: 'From Mainz, Germany', tags: [] },
     ],
   },
   {
@@ -165,9 +223,10 @@ const rawMarketplaces = [
     mapPos: { x: 150, y: 290 },
     items: [
       { name: 'Trio de Pintxos', price: '$7.25', description: 'Jamón croqueta, pan con tomate, tortilla Española', tags: ['new for 2026'] },
-      { name: 'Paella Caldoso', price: '$8.00', description: 'Rock shrimp, bay scallops, smoked mussels', tags: ['gluten/wheat-friendly'] },
-      { name: 'Basque Cheesecake', price: '$5.25', description: 'With orange sauce', tags: ['gluten/wheat-friendly', 'vegetarian'] },
-      { name: 'Summer in Spain', price: '$12.50', description: 'Frozen Simply Lemonade with Yellow and Green Chartreuse liqueurs', tags: [] },
+      { name: 'Paella Caldoso', price: '$8.00', description: 'Rock shrimp, bay scallops, smoked mussels', tags: ['gluten/wheat-friendly', 'new for 2026'] },
+      { name: 'Croquetas de Jamón', price: '$6.99', description: 'With saffron aïoli and shaved jamón serrano', tags: [] },
+      { name: 'Basque Cheesecake', price: '$5.25', description: 'With orange sauce', tags: ['gluten/wheat-friendly', 'vegetarian', 'new for 2026'] },
+      { name: 'Summer in Spain', price: '$12.50', description: 'Frozen Simply Lemonade with Yellow and Green Chartreuse liqueurs', tags: ['new for 2026'] },
     ],
   },
   {
@@ -178,8 +237,12 @@ const rawMarketplaces = [
     mapPos: { x: 238, y: 300 },
     items: [
       { name: 'Stromboli', price: '$8.00', description: 'Baked ham and provolone roll with Parmesan and tomato sauce', tags: [] },
+      { name: 'Arancini', price: '$7.75', description: 'Risotto with beef ragoût, peas, parmesan, and tomato sauce', tags: [] },
       { name: 'Pollo al Marsala', price: '$9.00', description: 'Roasted chicken drumstick, creamy potato gnocchi, mushrooms, Marsala sauce', tags: ['30th Anniversary Legacy Item'] },
-      { name: 'Almond Panna Cotta', price: '$6.00', description: null, tags: [] },
+      { name: 'Insalata di Pasta', price: '$7.50', description: 'Penne, apple, raisins, scallions, almonds, honey, and lemon dressing, served chilled', tags: [] },
+      { name: 'Almond Panna Cotta', price: '$6.00', description: 'With orange marmalade, whipped cream, and candied almonds', tags: [] },
+      { name: 'Elderflower Sparkling Cocktail', price: '$16.00', description: 'Mint-infused elderflower liqueur, prosecco, and blood orange soda', tags: ['new for 2026'] },
+      { name: 'Italian-inspired Margarita', price: '$13.00', description: null, tags: [] },
     ],
   },
   {
@@ -199,7 +262,10 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'Near American Adventure, World Showcase (Marketplace #17)',
     mapPos: { x: 452, y: 213 },
-    items: [],
+    items: [
+      { name: 'Pumpkin Pie Funnel Cake', price: '$12.50', description: 'Pumpkin pie ice cream, whipped cream, dark chocolate sauce, cinnamon streusel, and powdered sugar', tags: [] },
+      { name: 'Huckleberry Funnel Cake', price: '$12.00', description: 'Huckleberry ice cream, whipped cream, chocolate sauce, blackberry brandy glaze, and powdered sugar', tags: [] },
+    ],
   },
   {
     name: 'Japan',
@@ -208,10 +274,10 @@ const rawMarketplaces = [
     area: 'Japan pavilion, World Showcase (Marketplace #18)',
     mapPos: { x: 543, y: 263 },
     items: [
-      { name: 'Spicy Temaki Hand Roll', price: null, description: null, tags: ['new for 2026', 'spicy'] },
-      { name: 'Beef Wagyu Temaki Hand Roll', price: null, description: null, tags: ['new for 2026'] },
-      { name: 'Teriyaki Chicken Bun', price: null, description: null, tags: ['returning favorite'] },
-      { name: 'Beef Wagyu Don', price: null, description: 'Rice bowl with American wagyu beef blend, steamed rice, pickles, tōgarashi, pickled ginger', tags: [] },
+      { name: 'Spicy Temaki Hand Roll', price: '$9.00', description: 'Spicy tuna, cucumber, rice cracker, and spicy mayonnaise sauce', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Beef Wagyu Temaki Hand Roll', price: '$10.25', description: 'Savory American wagyu beef, pickled ginger, and spicy mayonnaise sauce', tags: [] },
+      { name: 'Teriyaki Chicken Bun', price: '$7.95', description: 'Steamed bun filled with minced chicken, vegetables, and teriyaki sauce', tags: ['returning favorite'] },
+      { name: 'Beef Wagyu Don', price: '$9.50', description: 'Rice bowl with American wagyu beef blend, steamed rice, pickles, tōgarashi, pickled ginger', tags: ['new for 2026'] },
       { name: 'Osakana Karaage', price: null, description: 'Crispy-fried pollock with spicy mayonnaise and sweet-creamy yuzu sauce', tags: ['spicy'] },
     ],
   },
@@ -222,9 +288,9 @@ const rawMarketplaces = [
     mapPos: { x: 573, y: 250 },
     items: [
       { name: 'Griddled Cheese with Pistachios and Honey', price: '$5.25', description: "Emile's Fromage Montage cheese-stroll item", tags: ['vegetarian'] },
-      { name: 'Lamb Gyro', price: '$7.00', description: 'Shaved lettuce, tomato-cucumber relish, tzatziki on warm flatbread', tags: [] },
+      { name: 'Lamb Gyro', price: '$7.00', description: 'Shaved lettuce, tomato-cucumber relish, tzatziki on warm flatbread', tags: ['30th Anniversary Legacy Item'] },
       { name: 'Spanakopita', price: '$5.19', description: null, tags: ['vegetarian'] },
-      { name: 'Chicken Souvlaki Gyro', price: null, description: null, tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Wine Flight', price: '$7.50', description: 'Mylonas Winery Assyrtiko Dry White (Attiki), Zoe Rosé (Peloponnese), Kir-Yianni Naoussa Xinomavro Dry Red (Naoussa)', tags: [] },
       { name: 'Greek Melon Limeade', price: '$12.00', description: 'Kleos Mastiha spirit, Artonic Melon apéritif, Pearl vodka, lime sour mix', tags: [] },
     ],
   },
@@ -236,7 +302,11 @@ const rawMarketplaces = [
     mapPos: { x: 637, y: 258 },
     items: [
       { name: 'Ras el Hanout Cauliflower Bowl', price: '$6.49', description: 'Chickpea salad, golden raisin relish, parsley, served with pita', tags: ['plant-based'] },
-      { name: 'Moroccan Wrap with Plant-based Falafel', price: '$6.29', description: 'Tomato-cucumber relish and garlic sauce on warm Moroccan flatbread', tags: ['plant-based', 'vegan'] },
+      { name: 'Moroccan Wrap', price: '$6.29', description: 'Tomato-cucumber relish and garlic sauce on warm Moroccan flatbread; choice of chermoula chicken, Moroccan-spiced lamb, or plant-based falafel', tags: ['plant-based option available'] },
+      { name: 'Stone-Baked Moroccan Bread with Assorted Dips', price: '$5.29', description: null, tags: [] },
+      { name: 'Chermoula Chicken Kebab', price: '$6.25', description: null, tags: [] },
+      { name: 'Moroccan-Spiced Lamb Kebab', price: '$6.25', description: null, tags: [] },
+      { name: 'Pistachio Cake', price: '$4.75', description: null, tags: [] },
       { name: 'Chocolate-Pistachio Cookie', price: '$4.29', description: null, tags: [] },
     ],
   },
@@ -246,9 +316,11 @@ const rawMarketplaces = [
     area: 'Between Morocco and France, World Showcase (Marketplace #21)',
     mapPos: { x: 693, y: 293 },
     items: [
+      { name: 'Beer-braised Beef', price: '$6.79', description: 'With smoked Gouda mashed potatoes', tags: [] },
+      { name: 'Belgian Waffle', price: '$5.49', description: 'With cookie butter and whipped cream, topped with speculoos cookie pieces', tags: [] },
+      { name: 'Chilled Belgian Coffee', price: '$5.29', description: null, tags: ['non-alcoholic'] },
       { name: 'Belgian Beer Flight', price: '$12.75', description: 'Van Steenberge Piraat 7 Strong Ale, St. Bernardus Watou Blond Ale, Verhaeghe Duchesse Red Sweet & Tart Cherry Ale', tags: [] },
       { name: 'Individual Belgian Beer Pour', price: '$6.00 / $9.75', description: null, tags: [] },
-      { name: 'Chilled Belgian Coffee', price: null, description: null, tags: [] },
     ],
   },
   {
@@ -258,8 +330,10 @@ const rawMarketplaces = [
     mapPos: { x: 700, y: 322 },
     items: [
       { name: 'Feijoada', price: '$6.50', description: 'Black beans with pork belly and Brazil nut pesto', tags: [] },
-      { name: 'Pão de Queijo', price: '$5.00', description: 'Brazilian cheese bread', tags: ['vegetarian'] },
+      { name: 'Pão de Queijo', price: '$5.19', description: 'Brazilian cheese bread', tags: ['vegetarian'] },
       { name: 'Moqueca de Camarão', price: '$6.99', description: 'Plancha-seared shrimp, bell peppers, cilantro, tomatoes in coconut milk broth', tags: [] },
+      { name: '81Bay Brewing Co. Bossa Nova Lager', price: '$5.75 / $9.75', description: null, tags: [] },
+      { name: 'Frozen Caipirinha', price: '$12.50', description: null, tags: [] },
     ],
   },
   {
@@ -305,14 +379,24 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'Near the walkway to World Celebration (Marketplace #25)',
     mapPos: { x: 497, y: 693 },
-    items: [],
+    items: [
+      { name: 'Liquid Nitrogen Frozen Pumpkin Cheesecake Mousse', price: '$5.50', description: 'Philadelphia Cream Cheese with candied pecans and maple-caramel sauce', tags: ['new for 2026', 'DDP snack eligible'] },
+      { name: 'Soft-serve in a Cone', price: '$6.50', description: 'Vanilla, apple-cinnamon, or salted caramel', tags: ['DDP snack eligible'] },
+      { name: 'Floats', price: '$6.75', description: "Coca-Cola, Barq's Crème Soda, or Fanta Grape with choice of soft-serve", tags: ['non-alcoholic', 'DDP snack eligible'] },
+      { name: 'Frozen Apple Pie', price: '$6.75', description: 'Apple pie filling, apple-cinnamon soft-serve, and apple-cinnamon cider, topped with streusel', tags: ['non-alcoholic', 'DDP snack eligible'] },
+      { name: 'Früli Strawberry Belgian White Beer', price: '$12.00', description: null, tags: ['new for 2026'] },
+      { name: 'Strawberry Beer Float', price: '$13.25', description: 'Früli Strawberry Belgian White Beer and vanilla soft-serve', tags: ['new for 2026'] },
+    ],
   },
   {
     name: 'Shimmering Sips',
     type: 'kiosk',
-    area: 'Near the walkway to World Celebration (Marketplace #26)',
+    area: 'Near the walkway to World Celebration (Marketplace #26) — also the redemption point for Emile\'s Fromage Montage passport stamps',
     mapPos: { x: 555, y: 658 },
-    items: [],
+    items: [
+      { name: 'Mimosa Flight', price: null, description: 'Berry, Blood Orange, and Tropical mimosas', tags: [] },
+      { name: 'Strawberry Champagne Trifle', price: null, description: null, tags: [] },
+    ],
   },
   {
     name: "Hawai'i",
@@ -334,7 +418,9 @@ const rawMarketplaces = [
     area: 'Near the walkway to World Celebration, World Showcase (Marketplace #28)',
     mapPos: { x: 475, y: 695 },
     items: [
-      { name: 'Pumpkin-Mascarpone Ravioli', price: null, description: 'Returning favorite', tags: ['vegetarian', '30th Anniversary Legacy Item'] },
+      { name: 'Autumn Chili', price: '$6.50', description: 'IMPOSSIBLE Beef with root vegetables, plant-based cheddar, and plant-based sour cream in a bread bowl', tags: ['plant-based'] },
+      { name: 'Pumpkin-Mascarpone Ravioli', price: '$5.50', description: 'Brown butter vinaigrette, pecorino cheese, pomegranate seeds, and hazelnut praline', tags: ['returning favorite', 'vegetarian'] },
+      { name: 'Schiacciata Sandwich', price: '$6.25', description: 'Mortadella, prosciutto ham, sun-dried peppers, arugula, stracciatella cheese, fall squash mostarda, and pistachio pesto on warm focaccia', tags: [] },
     ],
   },
   {
@@ -342,14 +428,25 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'Near Forest & Field, World Showcase (Marketplace #29)',
     mapPos: { x: 485, y: 720 },
-    items: [],
+    items: [
+      { name: 'Butternut Squash and Ginger Bisque', price: '$5.49', description: null, tags: [] },
+      { name: 'Freshly Baked Carrot Cake', price: '$4.99', description: 'With walnuts and cream cheese icing', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Apple-Cinnamon and Caramel Mini Churros Sundae', price: '$5.29', description: null, tags: [] },
+      { name: 'Fall Fruit Cheesecake', price: '$5.50', description: 'Featuring Boursin Fig & Balsamic Cheese', tags: [] },
+      { name: 'Southern Tier Brewing Co. Sweater Weather Vanilla Toffee Amber Ale', price: '$8.50 / $9.75', description: null, tags: ['new for 2026'] },
+      { name: '3 Daughters Brewing Apple Strudel Hard Cider', price: '$5.75 / $11.00', description: null, tags: [] },
+    ],
   },
   {
     name: 'Bramblewood Bites',
     type: 'kiosk',
     area: 'Near Forest & Field, World Showcase (Marketplace #30)',
     mapPos: { x: 497, y: 747 },
-    items: [],
+    items: [
+      { name: 'Grilled Cider-brined Pork Tenderloin', price: '$7.00', description: 'Chili-apple butter, celeriac-apple slaw, and apple cider gastrique', tags: ['DDP snack eligible'] },
+      { name: 'Cast Iron-seared River Trout', price: '$7.25', description: 'Vanilla-butternut squash purée, brussels sprouts salad, candied pecans, spiced pumpkin seeds, dried cranberries, and maple dressing', tags: ['DDP snack eligible'] },
+      { name: 'Cast Iron-roasted Brussels Sprouts and Root Vegetables', price: '$5.00', description: 'Dried cranberries, spiced pumpkin seeds, and pumpkin seed vinaigrette', tags: ['plant-based option', 'DDP snack eligible'] },
+    ],
   },
   {
     name: 'Earth Eats',
@@ -357,7 +454,8 @@ const rawMarketplaces = [
     area: 'World Nature (Marketplace #31, opens October 2, 2026)',
     mapPos: { x: 588, y: 858 },
     items: [
-      { name: 'Lemon-Almond-Olive Oil Cake', price: null, description: 'New for 2026', tags: ['new for 2026', 'vegetarian'] },
+      { name: 'Red Wine-braised Beef Short Rib', price: null, description: 'Goat cheese polenta, tomato ragù, shaved pecorino cheese, and petit herbs', tags: [] },
+      { name: 'Lemon-Almond-Olive Oil Cake', price: null, description: 'With whipped Greek yogurt panna cotta', tags: ['new for 2026', 'vegetarian'] },
     ],
   },
   {
@@ -365,7 +463,11 @@ const rawMarketplaces = [
     type: 'kiosk',
     area: 'World Celebration (Marketplace #32, opens September 9, 2026)',
     mapPos: { x: 472, y: 862 },
-    items: [],
+    items: [
+      { name: 'Potato Pierogi', price: '$5.99', description: 'With kielbasa, caramelized onions, and sour cream', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Bo Ssam Pork Belly Lettuce Wraps', price: '$6.19', description: 'Bo Ssam pork belly, kimchi slaw, and spicy aïoli', tags: ['30th Anniversary Legacy Item'] },
+      { name: 'Pumpkin Cheesecake Mousse Trifle', price: '$5.29', description: 'Philadelphia Cream Cheese with citrus sauce and spice cake, topped with cranberry streusel', tags: ['30th Anniversary Legacy Item'] },
+    ],
   },
   {
     name: 'The Wedge (Dairy Does More)',
@@ -373,11 +475,11 @@ const rawMarketplaces = [
     area: 'Inside CommuniCore Hall, World Celebration (Marketplace #33, open Sept 18 – Nov 8)',
     mapPos: { x: 487, y: 890 },
     items: [
-      { name: 'Selection of Cheeses with accompaniments', price: null, description: null, tags: ['vegetarian'] },
-      { name: 'Cannoli Milkshake', price: null, description: null, tags: ['vegetarian'] },
-      { name: 'Cheesesteak Macaroni and Cheese', price: null, description: null, tags: [] },
-      { name: 'Crab and Corn Macaroni and Cheese', price: null, description: null, tags: [] },
-      { name: 'Three-Cheese Macaroni and Cheese', price: null, description: null, tags: ['vegetarian'] },
+      { name: 'Selection of Cheeses with accompaniments', price: null, description: null, tags: ['vegetarian', '30th Anniversary Legacy Item'] },
+      { name: 'Cannoli Milkshake', price: '$5.49', description: 'Topped with chocolate shavings, cannoli shell, and a maraschino cherry', tags: ['vegetarian'] },
+      { name: 'Cheesesteak Macaroni and Cheese', price: null, description: 'Shaved beef, peppers, onions, and bread crumbs', tags: [] },
+      { name: 'Crab and Corn Macaroni and Cheese', price: '$7.19', description: 'Smoked cheddar sauce, bacon, crab seasoning, roasted corn, herbed panko, and jalapeños', tags: [] },
+      { name: 'Three-Cheese Macaroni and Cheese', price: null, description: 'Smoked cheddar sauce and herbed panko', tags: ['vegetarian'] },
       { name: 'Wine and Cheese Pairing', price: null, description: null, tags: [] },
       { name: 'Wine Flight', price: null, description: null, tags: [] },
     ],

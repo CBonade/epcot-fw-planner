@@ -303,19 +303,42 @@ html, body {
   border: 1px solid var(--border);
   border-radius: 12px;
 }
+.map-ground {
+  fill: #dcefdc;
+}
+.map-promenade {
+  fill: none;
+  stroke: #c7b8a8;
+  stroke-width: 0.9;
+  stroke-dasharray: 1.6 1.4;
+}
 .map-lagoon {
-  fill: #cfe8f2;
+  fill: #a9d6e8;
+  stroke: #8fc3da;
+  stroke-width: 0.4;
 }
-.map-neighborhood {
-  fill: #e6d9f5;
-}
-.map-neighborhood-label {
-  font-size: 1.9px;
-  fill: var(--purple-dark);
+.map-lagoon-label {
+  font-size: 2px;
+  fill: #3d6f82;
   font-weight: 600;
 }
+.map-entrance-label {
+  font-size: 2.6px;
+  fill: var(--purple-dark);
+  font-weight: 700;
+}
+.map-pavilion-dot circle {
+  fill: #ffffff;
+  stroke: var(--purple);
+  stroke-width: 0.6;
+}
+.map-flag {
+  font-size: 3.6px;
+}
 .map-dot {
-  fill: #b9b3c2;
+  fill: #f2994a;
+  stroke: #fff;
+  stroke-width: 0.3;
 }
 .map-pin-count {
   font-size: 3.2px;
@@ -325,10 +348,10 @@ html, body {
 .map-pin-label {
   font-size: 2.8px;
   fill: var(--text);
-  font-weight: 600;
+  font-weight: 700;
   paint-order: stroke;
   stroke: #fff;
-  stroke-width: 0.6px;
+  stroke-width: 0.7px;
 }
 .map-detail {
   margin-top: 12px;

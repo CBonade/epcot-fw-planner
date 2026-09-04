@@ -38,20 +38,16 @@ npm install
 npm run dev
 ```
 
-## Deploying to Netlify
+## Deploying to Vercel
 
-This repo includes a `netlify.toml` with the build already configured
-(`npm run build`, publish directory `dist`). To deploy:
+This repo includes a `vercel.json` with the build already configured
+(`npm run build`, output directory `dist`). Once the repo is connected to a
+Vercel project (Vercel auto-detects the Vite framework), every push to the
+connected branch deploys automatically.
 
-1. In Netlify, choose **Add new site → Import an existing project** and
-   connect this GitHub repository.
-2. Netlify will read `netlify.toml` automatically — no manual build
-   settings needed.
-3. Deploy. Any future push to the connected branch redeploys automatically.
-
-Alternatively, via the Netlify CLI:
+Alternatively, via the Vercel CLI:
 
 ```bash
 npm run build
-npx netlify deploy --prod --dir=dist
+npx vercel --prod
 ```
